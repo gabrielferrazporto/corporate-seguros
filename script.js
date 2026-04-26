@@ -15,6 +15,8 @@ const CONTACT_CONFIG = {
 
 document.addEventListener("DOMContentLoaded", () => {
     applyContactConfig();
+    setupClickableInsuranceCards();
+    setupBackToTopButton();
     setupSmoothScroll();
     setupNavbarState();
     setupRevealAnimations();
@@ -61,6 +63,59 @@ function buildWhatsAppUrl(context) {
         : CONTACT_CONFIG.whatsappMessage;
 
     return `https://wa.me/${CONTACT_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
+function setupBackToTopButton() {
+    const backToTopButton = document.querySelector("[data-back-to-top]");
+
+    if (!backToTopButton) {
+        return;
+    }
+
+    const toggleButton = () => {
+        backToTopButton.classList.toggle("is-visible", window.scrollY > 260);
+    };
+
+    backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    toggleButton();
+    window.addEventListener("scroll", toggleButton, { passive: true });
+}
+
+function setupClickableInsuranceCards() {
+    const cards = document.querySelectorAll("[data-card-whatsapp]");
+
+    cards.forEach((card) => {
+        const context = card.dataset.whatsappContext;
+        const url = buildWhatsAppUrl(context);
+
+        card.classList.add("is-clickable");
+        card.setAttribute("role", "link");
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("aria-label", `Solicitar cotação de ${context}`);
+
+        card.addEventListener("click", (event) => {
+            if (event.target.closest("a, button")) {
+                return;
+            }
+
+            window.open(url, "_blank", "noopener,noreferrer");
+        });
+
+        card.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter" && event.key !== " ") {
+                return;
+            }
+
+            event.preventDefault();
+            window.open(url, "_blank", "noopener,noreferrer");
+        });
+    });
 }
 
 function setupSmoothScroll() {
