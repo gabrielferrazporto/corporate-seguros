@@ -164,7 +164,7 @@ img {
 
 .navbar-nav .nav-link {
     color: var(--color-dark);
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.55rem 0.75rem;
     position: relative;
     font-size: 0.95rem;
@@ -363,17 +363,26 @@ img {
 }
 
 .hero-title {
-    font-family: var(--font-main);
+    font-family: "Manrope", var(--font-main);
     font-size: clamp(1.98rem, 3.62vw, 3.25rem);
-    font-weight: 500;
-    line-height: 1.03;
-    margin-bottom: 24px;
-    color: var(--color-dark);
-    letter-spacing: 0.02em;
+    font-weight: 550;
+    line-height: 1.04;
+    margin-bottom: 26px;
+    color: #06080c;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .hero-title-nowrap {
     white-space: nowrap;
+}
+
+.hero-title-line {
+    display: inline;
+}
+
+.hero-title-line + .hero-title-line::before {
+    content: " ";
 }
 
 .hero-actions {
@@ -403,8 +412,8 @@ img {
 
 .hero-showcase-card {
     position: relative;
-    width: min(100%, 330px);
-    padding: 17px 18px;
+    width: min(100%, 360px);
+    padding: 21px 22px;
     border-radius: 26px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 247, 250, 0.94) 100%);
     border: 1px solid rgba(15, 19, 26, 0.08);
@@ -1012,8 +1021,23 @@ img {
         align-items: center;
     }
 
+    .hero-section .container {
+        max-width: 1400px;
+    }
+
+    .hero-section .hero-copy {
+        flex: 0 0 72%;
+        max-width: 72%;
+    }
+
+    .hero-section .row > .col-lg-4 {
+        flex: 0 0 28%;
+        max-width: 28%;
+    }
+
     .hero-title {
         font-size: 3.78rem;
+        letter-spacing: 0.02em;
     }
 
     .hero-description {
@@ -1028,8 +1052,8 @@ img {
     }
 
     .hero-showcase-card {
-        width: min(100%, 360px);
-        padding: 24px 24px;
+        width: min(100%, 392px);
+        padding: 28px 28px;
     }
 
     .hero-showcase-top {
@@ -1056,10 +1080,44 @@ img {
     }
 }
 
+@media (min-width: 992px) {
+    .hero-title {
+        max-width: 760px;
+        margin-bottom: 28px;
+    }
+
+    .hero-title-line {
+        display: block;
+    }
+
+    .hero-title-line + .hero-title-line::before {
+        content: "";
+    }
+
+    .footer-section .row {
+        justify-content: center;
+    }
+
+    .floating-whatsapp {
+        width: 58px;
+        height: 58px;
+        font-size: 1.58rem;
+    }
+
+    .floating-backtotop {
+        width: 58px;
+        height: 58px;
+    }
+
+    .floating-backtotop i {
+        font-size: 1.9rem;
+    }
+}
+
 @media (max-width: 1199.98px) {
     .hero-showcase-card {
-        width: min(100%, 290px);
-        padding: 15px 13px;
+        width: min(100%, 316px);
+        padding: 17px 16px;
     }
 
     .hero-showcase-logo-wrap {
@@ -1120,8 +1178,8 @@ img {
     }
 
     .hero-showcase-card {
-        width: min(100%, 280px);
-        padding: 14px 12px;
+        width: min(100%, 302px);
+        padding: 16px 15px;
     }
 
     .hero-showcase-logo-wrap {
@@ -1185,7 +1243,7 @@ img {
     .hero-title {
         font-size: clamp(1.72rem, 7vw, 2.16rem);
         line-height: 0.98;
-        font-weight: 500;
+        font-weight: 550;
         letter-spacing: 0.025em;
     }
 
@@ -1221,7 +1279,7 @@ img {
         border: 1px solid rgba(15, 19, 26, 0.08);
         color: var(--color-dark);
         font-size: 0.68rem;
-        font-weight: 500;
+        font-weight: 550;
         letter-spacing: 0.06em;
     }
 
@@ -1280,8 +1338,39 @@ img {
         margin: 0 auto;
     }
 
+    .footer-block {
+        text-align: center;
+    }
+
+    .footer-contact {
+        justify-items: center;
+    }
+
+    .footer-contact li:nth-child(1) {
+        order: 3;
+    }
+
+    .footer-contact li:nth-child(2) {
+        order: 2;
+    }
+
+    .footer-contact li:nth-child(3) {
+        order: 1;
+    }
+
+    .footer-contact li {
+        justify-content: center;
+        text-align: left;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
     .footer-bottom {
         flex-direction: column;
+        justify-content: center;
+        text-align: center;
     }
 }
 
@@ -1302,7 +1391,7 @@ img {
     .hero-title {
         font-size: clamp(1.62rem, 7.2vw, 1.98rem);
         line-height: 0.98;
-        font-weight: 500;
+        font-weight: 550;
     }
 
     .hero-section .container::before {
